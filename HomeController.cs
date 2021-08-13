@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NetLearner.SignalRPoll.Hubs;
+using TestResultChat;
 
 namespace NetLearner.SignalRPoll
 {
@@ -12,21 +13,17 @@ namespace NetLearner.SignalRPoll
     {
         private ChatHub chat;
 
-        public HomeController(ChatHub _chatHub)
-        {
-            this.chat = _chatHub;
-        }
+        public HomeController(ChatHub _chatHub) => this.chat = _chatHub;
 
         // POST: HomeController/Create
         [HttpPost]
         [Route("Chat2")]
-        public async Task<ActionResult> SendMessageAsync([FromBody] TestResults results)
+        public async Task<ActionResult> SendMessageAsync([FromBody] MessageContent results)
         {
             try
             {
-                var l3 = this.chat.SendMessage("testMessage", results.msg).Result;
-                var l4 = this.chat.SendMessage("testInt", $"#{results.testint}").Result;
-
+                var l3 = this.chat.SendMessage2("testMessage", results).Result;
+                
                 return Content("MessageShown!");
             }
             catch
@@ -67,12 +64,6 @@ namespace NetLearner.SignalRPoll
             {
                 return View();
             }
-        }
-
-        public class TestResults
-        {
-            public string msg { get; set; }
-            public int testint { get; set; }
         }
     }
 }
