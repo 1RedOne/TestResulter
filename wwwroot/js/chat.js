@@ -5,8 +5,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 
 function showalert(message, alerttype) {
+    var type = "alert" + alerttype;
     var para = document.createElement("div");
-    para.innerHTML = '<div id="alertdiv" class="alert ' + alerttype + '"><span>' + message + '</span></div>'
+    para.innerHTML = '<div id="alertdiv" class="alert ' + type + '"><span>' + message + '</span></div>'
     document.querySelector("#notificationList").appendChild(para);
 }
 

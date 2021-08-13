@@ -15,7 +15,6 @@ namespace NetLearner.SignalRPoll
         public HomeController(ChatHub _chatHub)
         {
             this.chat = _chatHub;
-            var l = _chatHub.SendMessage("IncomingPowerShellUser", "connecting").Result;
         }
 
         // POST: HomeController/Create
@@ -25,18 +24,14 @@ namespace NetLearner.SignalRPoll
         {
             try
             {
-                //using (var chat = new ChatHub())
-                //{
-                //    var l = chat.SendMessage("PowerShell", msg).Result;
-                //}                
                 var l3 = this.chat.SendMessage("testMessage", results.msg).Result;
                 var l4 = this.chat.SendMessage("testInt", $"#{results.testint}").Result;
 
-                return Content("OK!");
+                return Content("MessageShown!");
             }
             catch
             {
-                return Content("FAIL!");
+                return Content("MessageIssue!");
             }
         }
 
