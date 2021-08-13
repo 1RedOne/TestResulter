@@ -2,10 +2,21 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
+
+
+function showalert(message, alerttype) {
+    var para = document.createElement("div");
+    para.innerHTML = '<div id="alertdiv" class="alert ' + alerttype + '"><span>' + message + '</span></div>'
+    document.querySelector("#notificationList").appendChild(para);
+}
+
+
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
 connection.on("ReceiveMessage", function (user, message) {
+    console.log("hi from " + user + " message" + message);
+    showalert(message, "alert-primary");
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = user + " says " + msg;
     var li = document.createElement("li");
