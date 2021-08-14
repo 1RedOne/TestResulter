@@ -10,5 +10,6 @@ namespace TestResultChat
         public string message { get; set; }
         public int testint { get; set; }
         public string alertType { get; set; }
+        public string source {  get; set; }  
     }
 }

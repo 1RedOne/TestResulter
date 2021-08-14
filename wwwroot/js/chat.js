@@ -13,11 +13,10 @@ function showalert(message, alerttype) {
     else {
         var type = "alert-" + message.alertType;
         var para = document.createElement("div");
-        para.innerHTML = '<div id="alertdiv" class="alert ' + type + '"><span>' + message.message + '</span></div>';
-        //todo , add time stamp and 'From Computer' here 
+        para.innerHTML = '<div id="alertdiv" class="alert ' + type + '"><span>' + message.message + '</span><div class="card-footer text-muted">' + message.source + ' at ' + Date().toString() +'</div ></div>';
+
         document.querySelector("#notificationList").appendChild(para);
     }
-
 }
 
 //Disable send button until connection is established
