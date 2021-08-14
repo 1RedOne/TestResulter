@@ -1,7 +1,7 @@
 ﻿[System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
 
 $body = @{message="This is a success message";testint=5;alertType="success";source="$($env:computername)"} | ConvertTo-Json
-irm https://localhost:44300/Chat2 -Method Post -Body $body -ContentType 'application/json' 
+irm https://localhost:5001/Chat2 -Method Post -Body $body -ContentType 'application/json' 
 
 
 #
