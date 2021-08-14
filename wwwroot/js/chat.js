@@ -13,7 +13,7 @@ function showalert(message, alerttype) {
     else {
         var type = "alert-" + message.alertType;
         var para = document.createElement("div");
-        para.innerHTML = '<div id="alertdiv" class="alert ' + type + '"><span>' + message.message + '</span><div class="card-footer text-muted">' + message.source + ' at ' + Date().toString() +'</div ></div>';
+        para.innerHTML = '<div id="alertdiv" class="alert ' + type + '"><span>' + message.message + '</span><div class="card-footer text-muted">' + message.source + ' at ' + moment().format('YYYY-MM-DD HH:m:s'); +'</div ></div>';
 
         document.querySelector("#notificationList").appendChild(para);
     }
